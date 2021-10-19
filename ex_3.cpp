@@ -15,6 +15,13 @@ ostream &operator<<(ostream &o, Racional r){
 	o << r.VerNum() << '/' << r.VerDen();
 	return o;
 }
+//sobrecarga de >>
+istream &operator>>(istream &i, Racional &r){
+	int n, d;
+	i >> n >> d;
+	r = Racional(n,d);
+	return i;
+}
 int main() {
 	
 	Racional r1, r2;

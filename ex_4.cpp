@@ -37,12 +37,10 @@ bool operator==(Complejo c1, Complejo c2){
 	return c1.VerReal()==c2.VerReal() and c1.VerImag()==c2.VerImag();
 }
 Complejo operator*(Complejo c1, Complejo c2){
-	float t1 = c1.VerReal() * c2.VerReal();
-	float t2 = c1.VerReal() * c2.VerImag();
-	float t3 = c1.VerImag() * c2.VerReal();
-	float t4 = c1.VerImag() * c2.VerImag() * (-1);
-	float r = t1+t4;
-	float i = t2+t3;
+	float r = (c1.VerReal() * c2.VerReal()) + 
+		(c1.VerImag() * c2.VerImag() * (-1));
+	float i = (c1.VerReal() * c2.VerImag()) +
+		(c1.VerImag() * c2.VerReal());
 	return Complejo(r,i);
 }
 int main() {

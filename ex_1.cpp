@@ -9,16 +9,6 @@ public:
 	Racional(int n, int d): num(n), den(d) {}
 	int VerNum() const { return num; }
 	int VerDen() const { return den; }
-	Racional operator*(Racional b){
-		int num = this->num*b.num;
-		int den = this->den*b.den;
-		Racional mult(num,den);
-		return mult;
-	}
-	Racional operator*(int x){
-		Racional mult(this->num*x,this->den);
-		return mult;
-	}
 };
 
 Racional operator+(Racional r1, Racional r2){
@@ -26,6 +16,21 @@ Racional operator+(Racional r1, Racional r2){
 	int d = r1.VerDen()*r2.VerDen();
 	return Racional(n,d);
 }
+Racional operator*(Racional a, Racional b){
+	int n = a.VerNum() * b.VerNum();
+	int d = a.VerDen() * b.VerDen();
+	return Racional(n,d);
+}
+Racional operator*(Racional a, int x){
+	Racional mult(a.VerNum()*x,a.VerDen());
+	return mult;
+}
+/*
+Racional operator*(int x){
+	Racional mult(this->num*x,this->den);
+	return mult;
+}
+*/
 void VerRac(Racional c){
 	cout << c.VerNum() << "/" << c.VerDen() << endl;
 }

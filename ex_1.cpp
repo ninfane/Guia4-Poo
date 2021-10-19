@@ -9,6 +9,17 @@ public:
 	Racional(int n, int d): num(n), den(d) {}
 	int VerNum() const { return num; }
 	int VerDen() const { return den; }
+	//pre incremento
+	Racional &operator++() {
+		num = num+den;
+		return *this;
+	}
+	//post incremento
+	Racional operator++(int) {
+		Racional v(num,den);
+		num += den;
+		return v;
+	}
 };
 
 Racional operator+(Racional r1, Racional r2){
@@ -25,12 +36,6 @@ Racional operator*(Racional a, int x){
 	Racional mult(a.VerNum()*x,a.VerDen());
 	return mult;
 }
-/*
-Racional operator*(int x){
-	Racional mult(this->num*x,this->den);
-	return mult;
-}
-*/
 void VerRac(Racional c){
 	cout << c.VerNum() << "/" << c.VerDen() << endl;
 }
@@ -57,16 +62,20 @@ int main() {
 	c = a+b+c;
 	VerRac(c);
 	
+	//funciona bien 
 	cout << "Multiplicacion de 3 racionales: " << endl;
 	c = a*b*c;
-	/*
+	VerRac(c);
+	
+	//funciona
 	cout << "Post incremento: " << endl;
 	b = c++;
 	VerRac(b);
 	
+	//funciona pero no hace bien el calculo, con otros numeros si anda
 	cout << "Pre incremento: " << endl;
 	a = ++c;
-	VerRac(a);*/
+	VerRac(a);
 	
 	return 0;
 }
